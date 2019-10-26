@@ -5,6 +5,8 @@ import uploadConfig from './config/upload';
 import UserController from './controllers/UserController';
 import CarController from './controllers/CarController';
 import SessionController from './controllers/SessionController';
+import FileController from './controllers/FileController';
+import ProviderController from './controllers/ProviderController';
 
 import authMiddleware from './middlewares/auth';
 
@@ -22,5 +24,9 @@ routes.post('/users', UserController.store);
 routes.use(authMiddleware);
 
 routes.put('/users', UserController.update);
+
+routes.get('/providers', ProviderController.index);
+
+routes.post('/files', upload.single('file'), FileController.store);
 
 export default routes;
