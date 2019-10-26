@@ -20,9 +20,14 @@ class App {
 
     this.server.use(cors());
     this.server.use(express.json());
+    // this.server.use(
+    //   '/files',
+    //   express.static(path.resolve(__dirname, '..', 'uploads', 'resized')),
+    // );
+
     this.server.use(
       '/files',
-      express.static(path.resolve(__dirname, '..', 'uploads', 'resized')),
+      express.static(path.resolve(__dirname, '..', 'uploads')),
     );
 
     this.server.use((req, res, next) => {
