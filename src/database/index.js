@@ -3,12 +3,13 @@ import mongoose from 'mongoose';
 
 import User from '../models/User';
 import File from '../models/File';
+import Appointment from '../models/Appointment';
 
 import databaseConfig from '../config/database';
 
 require('dotenv').config();
 
-const models = [User, File];
+const models = [User, File, Appointment];
 
 class Database {
   constructor() {
@@ -25,10 +26,8 @@ class Database {
   }
 
   mongo() {
-    this.mongoConnection = mongoose.connect(
-      `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-m7x8o.mongodb.net/test?retryWrites=true&w=majority`,
-      { useNewUrlParser: true },
-    );
+    this.mongoConnection = mongoose.connect(process.env.MONGO_URL,
+      { useNewUrlParser: true, useFindAndModify: true });
   }
 }
 
