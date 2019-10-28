@@ -31,15 +31,15 @@ class App {
     this.server.use(Sentry.Handlers.requestHandler());
     this.server.use(cors());
     this.server.use(express.json());
-    // this.server.use(
-    //   '/files',
-    //   express.static(path.resolve(__dirname, '..', 'uploads', 'resized')),
-    // );
-
     this.server.use(
       '/files',
-      express.static(path.resolve(__dirname, '..', 'uploads')),
+      express.static(path.resolve(__dirname, '..', 'uploads', 'resized')),
     );
+
+    // this.server.use(
+    //   '/files',
+    //   express.static(path.resolve(__dirname, '..', 'uploads')),
+    // );
 
     this.server.use((req, res, next) => {
       req.io = io;
