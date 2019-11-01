@@ -51,9 +51,9 @@ module.exports = {
   },
 
   async delete(req, res) {
-    const cars = await Cars.findById(req.params.id);
+    const cars = await Cars.findByIdAndDelete(req.params.id);
 
-    await cars.remove();
+    req.io.emit('delete', req.params.id);
 
     return res.json(cars);
   },
