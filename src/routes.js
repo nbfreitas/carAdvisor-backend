@@ -21,7 +21,7 @@ routes.post('/sessions', SessionController.store);
 
 routes.get('/cars', CarController.index);
 routes.post('/cars', upload.single('image'), CarController.store);
-routes.delete('/cars/:id', CarController.delete);
+routes.delete('/cars/:id/delete', CarController.delete);
 
 routes.post('/users', UserController.store);
 
@@ -34,7 +34,7 @@ routes.get('/providers/:providerId/available', AvailableController.index);
 
 routes.get('/appointments', AppointmentController.index);
 routes.post('/appointments', AppointmentController.store);
-routes.delete('/appointments/:id', AppointmentController.delete);
+routes.post('/appointments/:id', AppointmentController.delete);
 
 routes.get('/schedule', ScheduleController.index);
 
